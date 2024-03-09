@@ -1,7 +1,7 @@
 import express, { Router } from 'express';
 
-import { register } from '../controllers/payments';
+import { requestPaymentSession } from '../controllers/payments';
 
 export default (router: Router) => {
-  router.post('/payments/register', register);
+  router.post('/request-payment-session', requestPaymentSession);
 };
