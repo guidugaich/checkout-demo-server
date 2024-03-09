@@ -1,17 +1,28 @@
 import { Request, Response } from "express";
 
 import paymentsService from '../services/payments';
+import { log } from "console";
 
 export async function requestPaymentSession(req: Request, res: Response) {
   try {
-    console.log('request received for payments register');
-    const data = await paymentsService.requestPaymentSession();
+    const { amount, country, currency } = req.body;
+    if (!amount || !country || !currency) {
+      res.sendStatus(400);
+    };
 
-    console.log('paymentsService.requestPaymentSession', data);
+    const data = await paymentsService.requestPaymentSession(
+      amount,
+      country,
+      currency
+    );
     
-    
-    res.status(200).json({ message: 'Buenos dias', data})
+    res.status(200).json({data})
   } catch(err) {
     console.log(err);
   }
+}
+
+function validateRequestPaymentSessionData(body: any) {
+  
+
 }

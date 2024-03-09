@@ -3,9 +3,12 @@ import cors from 'cors';
 import http from 'http';
 
 import router from './routers';
+import bodyParser from 'body-parser';
 
 const app = express();
 app.use(cors({credentials: true}));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true}));
 
 const server = http.createServer(app);
 

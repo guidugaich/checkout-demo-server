@@ -1,19 +1,21 @@
 import checkoutHttpProxy from "../infra/http/checkoutHttpProxy";
 
-export async function requestPaymentSession() {
+export async function requestPaymentSession(
+  amount: number,
+  country: string,
+  currency: string
+) {
   const data = await checkoutHttpProxy.requestPaymentSession(
-    10,
-    'USD',
-    { address: { country: 'GB' } },
-    'success',
-    'failure'
-  )
-  
-  console.log('this is the service for payments being called', data);
+    amount,
+    currency,
+    country,
+    'https://example.com/payments/success',
+    "https://example.com/payments/failure"
+  );
 
   return data
 }
 
 export default {
   requestPaymentSession
-}
+};
