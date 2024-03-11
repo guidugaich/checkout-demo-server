@@ -7,7 +7,8 @@ const config = {
         secretKey: process.env.CHECKOUT_SECRET_KEY,
         processingChannelId: process.env.CHECKOUT_PROCESSING_CHANNEL_ID,
         baseUrl: process.env.CHECKOUT_BASE_URL,
-        paymentSessiosPath: '/payment-sessions'
+        paymentSessiosPath: '/payment-sessions',
+        hostedPaymentsPath: '/hosted-payments'
     }
 }
 

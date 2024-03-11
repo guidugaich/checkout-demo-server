@@ -1,6 +1,6 @@
 import checkoutHttpProxy from "../infra/http/checkoutHttpProxy";
 
-export async function requestPaymentSession(
+async function requestPaymentSession(
   amount: number,
   country: string,
   currency: string
@@ -16,6 +16,24 @@ export async function requestPaymentSession(
   return data
 }
 
+async function requestHostedPaymentPage(
+  amount: number,
+  country: string,
+  currency: string
+) {
+  const data = await checkoutHttpProxy.requestHostedPaymentPage(
+    amount,
+    currency,
+    country,
+    'https://guidugaich.github.io/checkout-demo-client/success',
+    "https://guidugaich.github.io/checkout-demo-client/failure",
+    "https://guidugaich.github.io/checkout-demo-client/cancel"
+  );
+
+  return data
+}
+
 export default {
-  requestPaymentSession
+  requestPaymentSession,
+  requestHostedPaymentPage
 };

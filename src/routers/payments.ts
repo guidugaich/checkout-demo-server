@@ -1,7 +1,8 @@
-import express, { Router } from 'express';
+import { Router } from 'express';
 
-import { requestPaymentSession } from '../controllers/payments';
+import { requestHostedPaymentsPage, requestPaymentSession } from '../controllers/payments';
 
 export default (router: Router) => {
   router.post('/request-payment-session', requestPaymentSession);
+  router.post('/request-hosted-payment-page', requestHostedPaymentsPage);
 };
