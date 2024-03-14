@@ -29,6 +29,11 @@ async function requestPaymentSession(
   })
     .then((res) => res.json())
     .then(data =>  data)
+    .catch((err) => {
+      console.log('error fetching data from Checkout.com', err);
+      
+      return null;
+    })
 
   return data
 }
@@ -64,6 +69,11 @@ async function requestHostedPaymentPage(
   })
     .then((res) => res.json())
     .then(data =>  data)
+    .catch((err) => {
+      console.log('error fetching data from Checkout.com', err);
+      
+      return null;
+    })
 
   return data
 }
